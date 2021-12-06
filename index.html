@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="hospital.js"></script>
+    <title>Hospital site</title>
+    <style>
+    .hero{
+  height:550px;
+  background-image:url(markus-frieauff-IJ0KiXl4uys-unsplash.jpg);
+  background-size:cover;
+  background-repeat:no-repeat;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero .overlay{
+  background-color:#000;
+  position:absolute;
+  height:100%;
+  width:100%;
+  z-index:1;
+  left:0;
+  right:0;
+  top:0;
+  opacity:0.5;
+}
+.hero .content{
+  color:#fff;
+  z-index:2;
+  text-align: center;
+  
+}
+.hero .content h1{
+  font-size:45px;
+  font-weight:700;
+  font-family: 'Montserrat', sans-serif;
+}
+.hero .content p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.float1{
+	position:fixed;
+	width:50px;
+	height:50px;
+	bottom:40px;
+	right:40px;
+	background-color: #25d366;
+	color:#ffffff;
+	border-radius:50px;
+	text-align:center;
+    font-size:30px;
+	box-shadow: 1px 1px 2px rgb(75, 74, 74);
+  z-index:100;
+}
+
+.my-float{
+	margin-top:10px;
+}
+
+#about figure {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
+  }
+
+  #about figure span {
+    float: left;
+    margin-left: -15px;
+    padding: 15px 20px;
+    position: relative;
+    top: 20px;
+  }
+
+  #about figure span i {
+    background: #29ca8e;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .entry-form {
+    background: #252020;
+    border-radius: 100%;
+    text-align: center;
+    padding: 6em;
+    width: 450px;
+    height: 450px;
+  }
+
+  .entry-form h2 {
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .entry-form .form-control {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid;
+    border-radius: 0;
+    box-shadow: none;
+    height: 45px;
+    margin: 10px 0;
+  }
+
+  .entry-form .submit-btn {
+    background: #ffffff;
+    border-radius: 50px;
+    border: 0;
+    color: #252020;
+    width: 50%;
+    height: 50px;
+    margin: 30px auto;
+    margin-bottom: 10px;
+  }
+
+  .entry-form .submit-btn:hover {
+    background: #29ca8e;
+    color: #ffffff;
+  }
+  .form-control {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .active{
+      color: #29ca8e !important;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container1{
+display: grid;
+place-items: center;
+position: relative;
+width: 255px;
+height: 355px;
+border-radius: 1em; 
+background: linear-gradient(50deg, #345834,#1e4881);
+overflow: hidden;
+}
+.container1::before {
+content: "";
+position: absolute;
+width: 450px;
+height: 35px;
+top:0;
+right: 35px;
+transition: 1.9s;
+background: linear-gradient(50deg, #00ff59, #02b3ff);
+transform: rotate(-45deg) translate(0,-100px);
+}
+.card1{
+display: grid;
+place-items: center;
+width: 247px;
+height:347px;
+background-color: #29ca8e;
+border-radius: .8em;
+z-index: 1;
+color: #858585;
+overflow: hidden;
+
+text-align: center;
+cursor: pointer;
+transition: .5s ease;
+}
+.card1:hover{
+color: #00ff59;
+}
+.container1:hover::before{
+animation: effect 2.9s;
+
+}
+@keyframes effect{
+100%{
+transform: rotate(-45deg) translate(0, 450px);
+}
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: #29ca8e; font-weight: bold ;font-size: 24px;"><script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+            <lord-icon
+                src="https://cdn.lordicon.com/hdiorcun.json"
+                trigger="loop"
+                colors="primary:#0000,secondary:#08a88a"
+                stroke="70"
+                style="width:70px;height:70px">
+            </lord-icon>Life Care</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="doctors.html">Doctor</a>
+                  </li>
+                  
+                    <li class="nav-item">
+                      <a class="nav-link" href="Contact.html">Contact</a>
+                    </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn " type="submit" style="background-color: #29ca8e;color: white;">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="content">
+          <h1 style="color: #29ca8e;">We are here for your Care</h1>
+          <p style="color: #ffffff;letter-spacing: 1px;">Far far away, behind the word mountains, far from <br>the countriesVokalia and Consonantia, there live the blind <br>texts. Separated they live in Bookmarksgrove.</p>
+        </div>
+      </div>
+      <br>
+      <div class="mii">
+        <h1 style="color: #29ca8e; font-weight: bold ;font-size: 24px;text-align: center;"><script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+            <lord-icon
+                src="https://cdn.lordicon.com/hdiorcun.json"
+                trigger="loop"
+                colors="primary:#0000,secondary:#08a88a"
+                stroke="70"
+                style="width:70px;height:70px">
+            </lord-icon>Life Care</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          
+          <div class="col" style="background-color: #29ca8e;font-size: 20px;color: #ffffff;height: 170px;"><center>
+          <br> <span id="count1" class="display-4" style="font-size: 50PX; font-weight: 600;color: #ffffff;margin-top: 30px;"></span>
+            <h2 style="font-size: 22px;font-weight: 500;"><br>Patients Cured</h2></div>
+          <div class="col" style="background-color: #656365"><center>
+            <br> <span id="count2" class="display-4"  style="font-size: 50PX; font-weight: 600;color: #ffffff;margin-top: 30px;"></span>
+
+              <h2 style="font-size: 22px;font-weight: 500;color: #ffffff;"><br>Beds</h2></div>
+          <div class="col" style="background-color: #29ca8e;"><center>
+            <br> <span id="count3" class="display-4"  style="font-size: 50PX; font-weight: 600; color: #ffffff;margin-top: 30px;"></span>
+
+              <h2 style="font-size: 22px;font-weight: 500;color: #ffffff;"><br>Awards Wins</h2></div>
+          <div class="col" style="background-color: #bec3c0;"><center>
+            <br> <span id="count4" class="display-4"  style="font-size: 50PX; font-weight: 600; color: black;margin-top: 30px;"></span>
+
+           
+              <h2 style="font-size: 22px;font-weight: 500;color: #000;"> <br>years Of Experience</h2></div>
+        </div>
+      </div>
+      <div class="hell1">
+        <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float1" target="_blank">
+            <i class="fa fa-whatsapp my-float"></i>
+            </a>
+      </div>
+      <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+
+
+          <div class="container1">
+            <div class="card1">
+                
+          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+            <img class="object-cover object-center rounded" alt="hero" src="doctors.magazine_-20210930-0001-removebg-preview.png" style="height: 347px;">
+          </div>
+              </div>
+              </div>
+              
+
+
+          <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center ">
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Stay <span style="color: #29ca8e;">Safe,</span>
+              <br>Stay <span style="color: #29ca8e;">Healthy</span></h1>
+            <p class="mb-8 leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. It is a paradisematic country, in which roasted parts of sentences fly into your mouth..</p>
+            <div class="flex justify-center">
+              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="background-color: #29ca8e;">Make an appointment <i class="fas fa-arrow-right" style="margin-top: 8px;margin-left: 8px;font-size: 16px;"></i></button>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+     
+     
+      
+ 
+
+   
+   
+    
+   
+   
+   
+  
+ 
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Our Services</h1>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="super-straho-xAQO5JU7F4U-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">Emergency Services</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="jonathan-borba-v_2FRXEba94-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">24 Hours Service</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="atikah-akhtar-XJptUS8nbhs-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">Dental Care</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="neonbrand-MEbT27ZrtdE-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">Cardiology</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="sammy-williams-38Un6Oi5beE-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">ENT Specialists</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="jair-lazaro-0lrJo37r6Nk-unsplash.jpg" style="border: 4px solid #2B4C2E;">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1"></h2>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3" style="color: #29ca8e;">Blood Screening</h1>
+                  <p class="leading-relaxed">A small river named Duden flows by their place and supplies it with the necessary regelialia..</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       <!-- ABOUT -->
+     <section id="about">
+        <div class="container">
+             <div class="row">
+
+                  <div class="col-md-6 col-sm-12">
+                       <div class="about-info">
+                           <br>
+                           
+                           
+                            <h2 style="font-size: 26px;font-weight: 500;">Start your journey to a better life with<span style="color: #29ca8e;font-weight: 700;"> life care</span> </h2>
+                              <br>
+                              <br>
+                            <figure>
+                                 <span><i class="fa fa-user-md" style="margin-top: -50px;"></i></span>
+                                 <figcaption>
+                                      <h3 style="font-size: 22px;font-weight: 500;">Qualified Doctors</h3>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                      <br>
+                                 </figcaption>
+                            </figure>
+                              <br>
+                            <figure>
+                                 <span><i class="fa fa-stethoscope" style="margin-top: -50px;"></i></span>
+                                 <figcaption>
+                                     
+                                      <h3 style="font-size: 22px;font-weight: 500;">Free Check Up</h3>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                      <br>
+                                 </figcaption>
+                            </figure>
+
+                            <figure>
+                                 <span><i class="fas fa-briefcase-medical" style="margin-top: -50px;"></i></span>
+                                 
+                                 <figcaption>
+                                    <h3 style="font-size: 22px;font-weight: 500;">24 Hours Service</h3>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                 </figcaption>
+                            </figure>
+                       </div>
+                  </div>
+
+                  <div class="col-md-offset-1 col-md-4 col-sm-12">
+                       <div class="entry-form">
+                            <form action="#" method="post">
+                                 <h2>Book an appointment</h2>
+                                 <input type="text" name="full name" class="form-control" placeholder="Patient Name" required="" style="color: #ffffff;">
+
+                                 <input type="email" name="email" class="form-control" placeholder="Email Adress" required="" style="color: #ffffff;">
+
+                                 <input type="number" name="password" class="form-control" placeholder="Number" required="" style="color: #ffffff;" >
+
+                                 <button class="submit-btn form-control" id="form-submit" >Book</button>
+                            </form>
+                       </div>
+                  </div>
+
+             </div>
+        </div>
+   </section>
+
+
+   <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Our Doctors</h1>
+      </div>
+      <div class="flex flex-wrap -m-4">
+        <div class="p-4 lg:w-1/2">
+          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="medical.corner-20210930-0002-removebg-preview.png"  style="border:3px solid black">
+            <div class="flex-grow sm:pl-8">
+              <h2 class="title-font font-medium text-lg text-gray-900">Dr. Fahad Razi</h2>
+              <h3 class="text-gray-500 mb-3" style="color: #29ca8e;">Ortho Specialists</h3>
+              <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+              <span class="inline-flex">
+                <a class="text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/2">
+          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="medical.corner-20210930-0001-removebg-preview.png"  style="border:3px solid black">
+            <div class="flex-grow sm:pl-8">
+              <h2 class="title-font font-medium text-lg text-gray-900">Dr. Iffath Amber</h2>
+              <h3 class="text-gray-500 mb-3" style="color: #29ca8e;">Heart Surgeon</h3>
+              <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+              <span class="inline-flex">
+                <a class="text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/2">
+          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="medical.corner-20210930-0003-removebg-preview.png"  style="border:3px solid black">
+            <div class="flex-grow sm:pl-8">
+              <h2 class="title-font font-medium text-lg text-gray-900">Dr. Faizan Azami</h2>
+              <h3 class="text-gray-500 mb-3" style="color: #29ca8e;">Skin Doctor</h3>
+              <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+              <span class="inline-flex">
+                <a class="text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 lg:w-1/2">
+          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="medical.corner-20211001-0001-removebg-preview.png"  style="border:3px solid black">
+            <div class="flex-grow sm:pl-8">
+              <h2 class="title-font font-medium text-lg text-gray-900">Sayeed Rahman</h2>
+              <h3 class="text-gray-500 mb-3" style="color: #29ca8e;">Dentist Specialists</h3>
+              <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+              <span class="inline-flex">
+                <a class="text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+                <a class="ml-2 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" style="color:#29ca8e ;"></path>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Our Patient Reviews</h1>
+      <div class="flex flex-wrap -m-4">
+        <div class="p-4 md:w-1/2 w-full">
+          <div class="h-full bg-gray-100 p-8 rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
+              <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+            </svg>
+            <p class="leading-relaxed mb-6">Synth chartreuse iPhone lomo cray raw denim brunch everyday carry neutra before they sold out fixie 90's microdosing. Tacos pinterest fanny pack venmo, post-ironic heirloom try-hard pabst authentic iceland.</p>
+            <a class="inline-flex items-center">
+              <img alt="testimonial" src="IMG_20210812_170247-removebg-preview.png" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+              <span class="flex-grow flex flex-col pl-4">
+                <span class="title-font font-medium text-gray-900">Holden Caulfield</span>
+                <span class="text-gray-500 text-sm" style="color: #29ca8e;">Patient</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/2 w-full">
+          <div class="h-full bg-gray-100 p-8 rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
+              <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+            </svg>
+            <p class="leading-relaxed mb-6">Synth chartreuse iPhone lomo cray raw denim brunch everyday carry neutra before they sold out fixie 90's microdosing. Tacos pinterest fanny pack venmo, post-ironic heirloom try-hard pabst authentic iceland.</p>
+            <a class="inline-flex items-center">
+              <img alt="testimonial" src="md_affan21-20210920-0001-removebg-preview.png" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+              <span class="flex-grow flex flex-col pl-4">
+                <span class="title-font font-medium text-gray-900">Alper Kamu</span>
+                <span class="text-gray-500 text-sm" style="color: #29ca8e;">Patient</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest" style="text-align: center;">Blogs Of Life Care</h1>
+
+      <div class="flex flex-wrap -m-4">
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="enecta-cannabis-extracts-8yF6aQ3NL7w-unsplash.jpg"  alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style="color: #29ca8e;">News</h2>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Laser Hair Removal</h1>
+              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+              <div class="flex items-center flex-wrap ">
+                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" style="color: #29ca8e;">Learn More
+                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>1.2K
+                </span>
+                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                  </svg>6
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="mathilde-langevin-hjIgJ4EeCPA-unsplash.jpg" alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style="color: #29ca8e;">Laser Treatment</h2>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Laser Skin Resurfacing</h1>
+              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+              <div class="flex items-center flex-wrap">
+                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" style="color: #29ca8e;">Learn More
+                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>1.2K
+                </span>
+                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                  </svg>6
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="piron-guillaume-U4FyCp3-KzY-unsplash.jpg" alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style="color: #29ca8e;">Todays Headline</h2>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Health Tips</h1>
+              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+              <div class="flex items-center flex-wrap ">
+                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" style="color: #29ca8e;">Learn More
+                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>1.2K
+                </span>
+                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                  </svg>6
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-gray-600 body-font" style="background-color: #bec3c0;">
+    <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+      <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <div class="mii">
+                <h1 style="color: #29ca8e; font-weight: bold ;font-size: 30px;text-align: center;"><script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/hdiorcun.json"
+                        trigger="loop"
+                        colors="primary:#0000,secondary:#08a88a"
+                        stroke="60"
+                        style="width:100px;height:100px">
+                    </lord-icon>Life Care</h1>
+                    <p>D2, No 32,33, Adhisri Apartments, Kothari Road, Nungambakkam,
+                        Chennai – 600034</p>
+              </div>
+         
+        </a>
+   
+      </div>
+      <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+        <div class="lg:w-1/3 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Pages</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class="text-gray-600 hover:text-gray-800 active" href="index.html">Home</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800" href="about.html">About</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800" href="doctors.html"> Doctors</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800" href="Contact.html">Contact</a>
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/3 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Treatment</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">Dentistry</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">Cardiology</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">ENT Specialists</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">Blood Screening</a>
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/3 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Services</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">24X7 Services</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">Free Checkup</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800" href=#QualifiedDoctors>Qualified Doctor</a>
+            </li>
+            <li>
+              <a class="text-gray-600 hover:text-gray-800">Emergengy Services</a>
+            </li>
+          </nav>
+        </div>
+       
+      </div>
+    </div>
+    <div class="bg-gray-100" style="background-color: #656365;">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-500 text-sm text-center sm:text-left" style="color: black;">© 2021 Glider
+          <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank" style="color: blanchedalmond;">glidertechnologies</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a class="text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" style="color: #1877f2;"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" style="color: #1da1f2;"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" style="color: #e1306c;"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" style="color:#fd1d1d"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" style="color: #0077b5;"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"  style="color: #0077b5;"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
